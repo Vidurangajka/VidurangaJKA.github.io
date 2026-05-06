@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anjana — Engineering Portfolio</title>
+<title>Anjana Viduranga — Engineering Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@300;400;500&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -27,8 +27,6 @@
     line-height: 1.7;
     overflow-x: hidden;
   }
-
-  /* GRID BACKGROUND */
   body::before {
     content: '';
     position: fixed;
@@ -40,8 +38,6 @@
     pointer-events: none;
     z-index: 0;
   }
-
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -85,11 +81,7 @@
   }
   .nav-links a:hover { color: var(--cyan); }
   .nav-links a:hover::after { transform: scaleX(1); }
-
-  /* SECTIONS */
   section { position: relative; z-index: 1; }
-
-  /* HERO */
   #hero {
     min-height: 100vh;
     display: flex;
@@ -113,16 +105,14 @@
   .hero-tag::before {
     content: '';
     display: inline-block;
-    width: 32px;
-    height: 1px;
+    width: 32px; height: 1px;
     background: var(--cyan);
   }
   .hero-name {
     font-family: 'Orbitron', monospace;
     font-weight: 900;
-    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
     line-height: 1.0;
-    letter-spacing: -0.01em;
     color: #fff;
     margin-bottom: 0.5rem;
   }
@@ -130,18 +120,18 @@
   .hero-role {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 300;
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     color: var(--muted);
     letter-spacing: 0.06em;
     margin-bottom: 2.5rem;
   }
   .hero-role strong { color: var(--amber); font-weight: 600; }
   .hero-desc {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: var(--text);
-    max-width: 580px;
+    max-width: 620px;
     margin-bottom: 3rem;
-    line-height: 1.8;
+    line-height: 1.85;
   }
   .hero-ctas { display: flex; gap: 1.25rem; flex-wrap: wrap; }
   .btn {
@@ -167,6 +157,7 @@
     margin-top: 4rem;
     padding-top: 3rem;
     border-top: 1px solid var(--border);
+    flex-wrap: wrap;
   }
   .stat-num {
     font-family: 'Orbitron', monospace;
@@ -182,8 +173,6 @@
     color: var(--muted);
     margin-top: 0.15rem;
   }
-
-  /* SECTION WRAPPER */
   .section-inner {
     max-width: 1100px;
     margin: 0 auto;
@@ -203,18 +192,13 @@
   }
   .section-title {
     font-family: 'Orbitron', monospace;
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 700;
     color: #fff;
     letter-spacing: 0.04em;
+    white-space: nowrap;
   }
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border2);
-  }
-
-  /* ABOUT */
+  .section-line { flex: 1; height: 1px; background: var(--border2); }
   #about { background: var(--bg2); }
   .about-grid {
     display: grid;
@@ -224,7 +208,6 @@
   }
   .about-text p { margin-bottom: 1.25rem; color: var(--text); font-size: 1.05rem; }
   .about-text p:last-child { margin-bottom: 0; }
-  .about-sidebar {}
   .info-block { margin-bottom: 2.5rem; }
   .info-label {
     font-family: 'JetBrains Mono', monospace;
@@ -234,13 +217,13 @@
     color: var(--cyan);
     margin-bottom: 0.6rem;
   }
-  .info-value { color: var(--text); font-weight: 600; font-size: 1.05rem; }
+  .info-value { color: var(--text); font-weight: 600; font-size: 1rem; line-height: 1.6; }
   .info-value a { color: var(--amber); text-decoration: none; }
   .info-value a:hover { text-decoration: underline; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
   .tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     letter-spacing: 0.08em;
     padding: 0.3rem 0.7rem;
     border: 1px solid var(--border2);
@@ -248,9 +231,6 @@
     text-transform: uppercase;
   }
   .tag.active { border-color: var(--cyan); color: var(--cyan); }
-
-  /* PROJECTS */
-  #projects {}
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -262,44 +242,42 @@
     padding: 2.5rem;
     position: relative;
     transition: background 0.2s;
-    cursor: default;
   }
   .project-card:hover { background: var(--bg3); }
   .project-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0;
-    width: 3px;
-    height: 0;
+    width: 3px; height: 0;
     background: var(--cyan);
     transition: height 0.3s;
   }
   .project-card:hover::before { height: 100%; }
   .project-num {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--muted);
     letter-spacing: 0.1em;
     margin-bottom: 1.25rem;
   }
   .project-title {
     font-family: 'Orbitron', monospace;
-    font-size: 1.05rem;
+    font-size: 0.92rem;
     font-weight: 600;
     color: #fff;
     margin-bottom: 1rem;
-    line-height: 1.35;
+    line-height: 1.4;
   }
   .project-desc {
     color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 0.9rem;
+    line-height: 1.75;
     margin-bottom: 1.5rem;
   }
   .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tech-pill {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 0.2rem 0.55rem;
@@ -312,23 +290,20 @@
     border-color: rgba(255,179,0,0.18);
     color: var(--amber);
   }
-
-  /* SKILLS */
   #skills { background: var(--bg2); }
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
   }
   .skill-category {
     border: 1px solid var(--border);
     padding: 2rem;
     background: var(--bg);
-    position: relative;
   }
   .skill-cat-title {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--cyan);
@@ -337,12 +312,7 @@
     border-bottom: 1px solid var(--border);
   }
   .skill-list { list-style: none; }
-  .skill-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    margin-bottom: 1.1rem;
-  }
+  .skill-item { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1.1rem; }
   .skill-item:last-child { margin-bottom: 0; }
   .skill-name {
     display: flex;
@@ -353,15 +323,10 @@
   }
   .skill-pct {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     color: var(--muted);
   }
-  .skill-bar {
-    height: 2px;
-    background: rgba(255,255,255,0.08);
-    position: relative;
-    overflow: hidden;
-  }
+  .skill-bar { height: 2px; background: rgba(255,255,255,0.08); position: relative; overflow: hidden; }
   .skill-fill {
     position: absolute;
     top: 0; left: 0; bottom: 0;
@@ -371,20 +336,11 @@
     width: 0;
   }
   .skill-fill.amber { background: var(--amber); }
-  @keyframes fillBar {
-    to { width: var(--w); }
-  }
-
-  /* RESUME */
-  #resume {}
-  .resume-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-  }
+  @keyframes fillBar { to { width: var(--w); } }
+  .resume-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
   .resume-section-title {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--amber);
@@ -412,7 +368,7 @@
   .timeline-item:last-child::after { display: none; }
   .tl-date {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     letter-spacing: 0.1em;
     color: var(--cyan);
     text-transform: uppercase;
@@ -420,7 +376,26 @@
   }
   .tl-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
   .tl-org { font-size: 0.9rem; color: var(--amber); margin-bottom: 0.5rem; }
-  .tl-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+  .tl-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .achievement-card {
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    background: var(--bg2);
+  }
+  .ach-title { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+  .ach-org {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
   .resume-download-row {
     margin-top: 4rem;
     padding-top: 3rem;
@@ -431,13 +406,11 @@
   }
   .resume-download-row p {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.1em;
     color: var(--muted);
     text-transform: uppercase;
   }
-
-  /* CONTACT */
   #contact { background: var(--bg2); }
   .contact-inner {
     max-width: 700px;
@@ -489,22 +462,15 @@
   }
   .contact-link:hover { border-color: var(--cyan); color: var(--cyan); }
   .contact-link svg { width: 18px; height: 18px; }
-  .contact-divider {
-    margin: 3rem auto;
-    width: 60px;
-    height: 1px;
-    background: var(--border2);
-  }
+  .contact-divider { margin: 3rem auto; width: 60px; height: 1px; background: var(--border2); }
   .contact-email {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--amber);
     text-decoration: none;
     letter-spacing: 0.04em;
   }
   .contact-email:hover { text-decoration: underline; }
-
-  /* FOOTER */
   footer {
     padding: 2rem 3rem;
     border-top: 1px solid var(--border);
@@ -521,41 +487,23 @@
     color: var(--muted);
     text-transform: uppercase;
   }
-
-  /* SCAN LINE ANIMATION */
-  @keyframes scanline {
-    0% { top: 0; }
-    100% { top: 100%; }
-  }
-
-  /* RESPONSIVE */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.25rem; }
+    .nav-links { gap: 1rem; }
     .section-inner { padding: 4rem 1.5rem; }
     #hero { padding: 7rem 1.5rem 3rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .resume-cols { grid-template-columns: 1fr; gap: 3rem; }
-    .hero-stats { gap: 2rem; flex-wrap: wrap; }
-  }
-
-  /* SCROLL FADE-IN */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
+    .about-grid, .resume-cols { grid-template-columns: 1fr; gap: 3rem; }
+    .achievements-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 2rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#hero">AN<span>J</span>ANA</a>
+  <a class="nav-logo" href="#hero">AV<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -565,13 +513,12 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-  <p class="hero-tag">Engineering Portfolio</p>
-  <h1 class="hero-name">ANJANA<br><span class="accent">—</span></h1>
-  <p class="hero-role">Hardware Engineer · <strong>Sensor Systems &amp; Smart Materials</strong></p>
+  <p class="hero-tag">Electronics &amp; Telecommunication Engineering</p>
+  <h1 class="hero-name">ANJANA<br>VIDUR<span class="accent">ANGA</span></h1>
+  <p class="hero-role">Embedded Systems · FPGA · PCB Design · <strong>Research @ NUS Singapore</strong></p>
   <p class="hero-desc">
-    I build things that sense the world — from soft magnetic e-skin sensors to precision electromagnetic field simulators. Currently at the National University of Singapore, pushing the boundaries of human-machine interfaces.
+    Third-year Electronics &amp; Telecom Engineering undergraduate at the University of Moratuwa, building real hardware that solves real problems — from RISC-V processors on FPGA to MagLev control systems at NUS Singapore. I design, simulate, fabricate, and iterate.
   </p>
   <div class="hero-ctas">
     <a href="#projects" class="btn">View Projects</a>
@@ -579,21 +526,24 @@
   </div>
   <div class="hero-stats">
     <div>
-      <div class="stat-num">17</div>
-      <div class="stat-label">Week Research Internship</div>
+      <div class="stat-num">3.7</div>
+      <div class="stat-label">GPA / 4.0 · UoM</div>
     </div>
     <div>
-      <div class="stat-num">6+</div>
+      <div class="stat-num">14+</div>
       <div class="stat-label">Hardware Projects</div>
     </div>
     <div>
+      <div class="stat-num">2×</div>
+      <div class="stat-label">Research Internships</div>
+    </div>
+    <div>
       <div class="stat-num">NUS</div>
-      <div class="stat-label">Singapore</div>
+      <div class="stat-label">Singapore · 2026</div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -603,47 +553,45 @@
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>
-          I'm a hardware engineer with a passion for building systems that sit at the intersection of materials science, electromagnetics, and human interfaces. My work spans from finite element simulation to hands-on fabrication — I like knowing how something works all the way down.
-        </p>
-        <p>
-          At NUS, I've been developing magnetic e-skin sensors — stretchable composite materials embedded with NdFeB powder that can detect pressure and deformation using Hall-effect sensor arrays. It's the kind of problem that requires you to think in magnetic fields, silicone chemistry, and PCB layout all at once.
-        </p>
-        <p>
-          Outside the lab, I design parametric CAD models in Fusion 360 and prototype with 3D printing — always iterating, always asking whether the design can be cleverer. I believe the best engineering work is both precise and a little bit beautiful.
-        </p>
+        <p>I'm a third-year Electronics and Telecommunication Engineering undergraduate at the University of Moratuwa, Sri Lanka, with a GPA of 3.7/4.0 (91.75/100). My work spans the full hardware stack — from transistor-level analog circuit design to FPGA architecture and embedded firmware.</p>
+        <p>Currently at the National University of Singapore, I'm developing real-time MagLev control systems and high-current H-bridge drive stages for electromagnetic actuation — work that demands precision across analog design, sensor integration, and control theory simultaneously.</p>
+        <p>Beyond the lab, I freelance as a PCB designer on Fiverr, serve as R&amp;D Director at OREPA, and volunteer as a Mathematics instructor. I believe engineering is most powerful when it's accessible — whether designing a smart greenhouse for Sri Lankan farmers or a concert wristband that syncs thousands of LEDs in real time.</p>
       </div>
-      <div class="about-sidebar reveal">
+      <div class="reveal">
         <div class="info-block">
           <p class="info-label">Current Position</p>
-          <p class="info-value">Research Intern · Magnetic Skin Lab<br>National University of Singapore</p>
+          <p class="info-value">Research Intern · NUS Singapore<br>Under Asst. Prof. Justin Moon<br>Division of Industrial Design &amp; CDE</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Degree</p>
+          <p class="info-value">B.Sc. (Hons) Electronics &amp; Telecom Eng.<br>University of Moratuwa · 2023–Present</p>
         </div>
         <div class="info-block">
           <p class="info-label">Location</p>
-          <p class="info-value">Singapore / Remote</p>
+          <p class="info-value">Piliyandala, Sri Lanka</p>
         </div>
         <div class="info-block">
           <p class="info-label">Core Interests</p>
           <div class="tags">
-            <span class="tag active">E-Skin Sensors</span>
-            <span class="tag active">Electromagnetics</span>
-            <span class="tag active">Soft Robotics</span>
-            <span class="tag">HRI</span>
-            <span class="tag">3D Printing</span>
-            <span class="tag">FEM Simulation</span>
-            <span class="tag">CAD Design</span>
+            <span class="tag active">FPGA Design</span>
+            <span class="tag active">Embedded Systems</span>
+            <span class="tag active">PCB Design</span>
+            <span class="tag active">MagLev / Control</span>
+            <span class="tag">Robotics</span>
+            <span class="tag">IoT</span>
+            <span class="tag">Processor Architecture</span>
+            <span class="tag">Analog Circuits</span>
           </div>
         </div>
         <div class="info-block">
           <p class="info-label">Email</p>
-          <p class="info-value"><a href="mailto:anjana@example.com">anjana@example.com</a></p>
+          <p class="info-value"><a href="mailto:vidurangajka.22@uom.lk">vidurangajka.22@uom.lk</a></p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -655,80 +603,124 @@
   <div class="projects-grid">
 
     <div class="project-card reveal">
-      <p class="project-num">P-001</p>
-      <h3 class="project-title">Magnetic E-Skin Sensor Array</h3>
-      <p class="project-desc">Stretchable pressure sensor using NdFeB-embedded Ecoflex silicone and a Hall-effect sensor array. Detects sub-Newton normal and shear forces across a 4×4 sensing grid with &lt;5% hysteresis.</p>
+      <p class="project-num">P-001 · NUS Singapore · 2026</p>
+      <h3 class="project-title">MagLev Control System</h3>
+      <p class="project-desc">Real-time magnetic levitation control algorithm maintaining precise stable equilibrium of levitated elements via optimised PWM duty cycles. Engineered high-current H-bridge drive stages with snubber circuits and flyback diodes. Closed-loop Hall-effect feedback with active EMI filtering for high-SNR position tracking.</p>
       <div class="project-tech">
-        <span class="tech-pill">Ecoflex Composites</span>
-        <span class="tech-pill">NdFeB Powder</span>
+        <span class="tech-pill">Control Systems</span>
+        <span class="tech-pill">H-Bridge Design</span>
         <span class="tech-pill">Hall Sensors</span>
-        <span class="tech-pill amber">FEMM Simulation</span>
+        <span class="tech-pill amber">Analog Circuits</span>
+        <span class="tech-pill amber">PWM</span>
       </div>
     </div>
 
     <div class="project-card reveal">
-      <p class="project-num">P-002</p>
-      <h3 class="project-title">Halbach Array Field Optimizer</h3>
-      <p class="project-desc">FEMM-based parametric simulation of Halbach array geometries for maximising flux density on the sensing face. Automated parameter sweeps across magnet thickness, pitch, and array segmentation.</p>
+      <p class="project-num">P-002 · Ongoing</p>
+      <h3 class="project-title">RISC-V Processor (RV32I) on FPGA</h3>
+      <p class="project-desc">Designed a full RV32I RISC-V processor in Verilog, synthesised on a ZYNQ 7000 FPGA at 50 MHz. Supports arithmetic and control instructions with complete verification in ModelSim. Git-based collaborative development.</p>
       <div class="project-tech">
-        <span class="tech-pill">FEMM 4.2</span>
-        <span class="tech-pill">Lua Scripting</span>
-        <span class="tech-pill amber">Python Post-Processing</span>
-        <span class="tech-pill">Magnetostatics</span>
+        <span class="tech-pill">Verilog</span>
+        <span class="tech-pill">ZYNQ 7000</span>
+        <span class="tech-pill">Vivado</span>
+        <span class="tech-pill amber">ModelSim</span>
+        <span class="tech-pill amber">Processor Architecture</span>
       </div>
     </div>
 
     <div class="project-card reveal">
-      <p class="project-num">P-003</p>
-      <h3 class="project-title">Print-in-Place Chainmail Mesh</h3>
-      <p class="project-desc">Parametric Fusion 360 design for a compliant, print-in-place square tile chainmail structure. Designed for wearable applications — tunable link clearances, single-print assembly-free fabrication.</p>
+      <p class="project-num">P-003 · IIT Kanpur · 2025</p>
+      <h3 class="project-title">QPSK Transceiver (HDL)</h3>
+      <p class="project-desc">Optimised a QPSK transceiver for hardware generation using HDL Coder and DSP HDL Toolbox with fixed-point compatibility. Implemented Digital AGC, symbol timing synchronisation, carrier phase/frequency recovery, and 13-bit Barker preambles.</p>
       <div class="project-tech">
-        <span class="tech-pill">Fusion 360</span>
-        <span class="tech-pill">Parametric CAD</span>
-        <span class="tech-pill amber">FDM Printing</span>
-        <span class="tech-pill">Section Analysis</span>
+        <span class="tech-pill">HDL Coder</span>
+        <span class="tech-pill">DSP HDL Toolbox</span>
+        <span class="tech-pill">MATLAB</span>
+        <span class="tech-pill amber">Signal Processing</span>
+        <span class="tech-pill amber">Fixed-Point</span>
       </div>
     </div>
 
     <div class="project-card reveal">
-      <p class="project-num">P-004</p>
-      <h3 class="project-title">Coil Geometry Modelling for Inductive Sensing</h3>
-      <p class="project-desc">Electromagnetic coil geometry study using finite element methods to characterise inductance sensitivity to deformation in flexible substrates. Informed coil winding specs for embedded sensing applications.</p>
+      <p class="project-num">P-004 · Robotic Gen · 2024–Present</p>
+      <h3 class="project-title">ESP32-S3 Custom Development Board</h3>
+      <p class="project-desc">Led design of a compact 4-layer ESP32-S3 IoT development board (48.13×25.27 mm) featuring USB-C, Wi-Fi/Bluetooth, GPIO breakouts, LED indicators, and a robust power distribution network with onboard antenna optimised for IoT applications.</p>
       <div class="project-tech">
-        <span class="tech-pill">FEM</span>
-        <span class="tech-pill">Inductive Sensing</span>
-        <span class="tech-pill amber">FEMM</span>
-        <span class="tech-pill">Coil Design</span>
+        <span class="tech-pill">EasyEDA</span>
+        <span class="tech-pill">ESP32-S3</span>
+        <span class="tech-pill">4-Layer PCB</span>
+        <span class="tech-pill amber">USB-C</span>
+        <span class="tech-pill amber">RF Design</span>
       </div>
     </div>
 
     <div class="project-card reveal">
-      <p class="project-num">P-005</p>
-      <h3 class="project-title">Sensor Characterisation Rig</h3>
-      <p class="project-desc">Custom test setup for systematic characterisation of e-skin sensor response — force-displacement curves, drift measurement, and spatial sensitivity mapping using controlled indentation apparatus.</p>
+      <p class="project-num">P-005 · Ongoing</p>
+      <h3 class="project-title">12-Layer PCB for NXP i.MX6</h3>
+      <p class="project-desc">Designing a 12-layer PCB for the NXP i.MX6 1.2 GHz processor in Altium Designer, with advanced stackup management for signal integrity and power distribution across DDR3 and high-speed USB interfaces.</p>
       <div class="project-tech">
-        <span class="tech-pill">Data Acquisition</span>
-        <span class="tech-pill">Python</span>
-        <span class="tech-pill amber">Matplotlib</span>
-        <span class="tech-pill">Arduino</span>
+        <span class="tech-pill">Altium Designer</span>
+        <span class="tech-pill">NXP i.MX6</span>
+        <span class="tech-pill">DDR3</span>
+        <span class="tech-pill amber">Signal Integrity</span>
+        <span class="tech-pill amber">12-Layer PCB</span>
       </div>
     </div>
 
     <div class="project-card reveal">
-      <p class="project-num">P-006</p>
-      <h3 class="project-title">Ecoflex Composite Fabrication Process</h3>
-      <p class="project-desc">Development and optimisation of a reproducible moulding process for NdFeB-Ecoflex composites — controlling powder concentration, mixing protocols, curing cycles, and post-magnetisation alignment.</p>
+      <p class="project-num">P-006 · 2024–Present</p>
+      <h3 class="project-title">Smart Communication Wristband</h3>
+      <p class="project-desc">ESP32-based wristband for synchronised LED displays at concerts via MQTT. Integrated ML for music genre detection and Spotify API for playlist syncing. Features voice control and a React web/mobile interface for real-time group synchronisation.</p>
       <div class="project-tech">
-        <span class="tech-pill">Silicone Fabrication</span>
-        <span class="tech-pill">Material Characterisation</span>
-        <span class="tech-pill amber">Magnetic Alignment</span>
+        <span class="tech-pill">ESP32</span>
+        <span class="tech-pill">MQTT</span>
+        <span class="tech-pill">React</span>
+        <span class="tech-pill amber">Machine Learning</span>
+        <span class="tech-pill amber">Spotify API</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <p class="project-num">P-007 · UoM EN2160 · 2025</p>
+      <h3 class="project-title">Restaurant Service Robot</h3>
+      <p class="project-desc">Embedded firmware on SAM3X8E for an autonomous restaurant robot — line-following, S-curve motion profiling, obstacle detection. Managed proximity/ultrasonic sensor integration, PCB design, and Git repository for a 10-member team.</p>
+      <div class="project-tech">
+        <span class="tech-pill">C · SAM3X8E</span>
+        <span class="tech-pill">Atmel Studio</span>
+        <span class="tech-pill">PCB Design</span>
+        <span class="tech-pill amber">RS-485/232</span>
+        <span class="tech-pill amber">Motion Control</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <p class="project-num">P-008 · 2024–Present</p>
+      <h3 class="project-title">Smart IoT Greenhouse System</h3>
+      <p class="project-desc">ESP32-based autonomous greenhouse for Sri Lankan farmers — monitoring temperature, humidity, soil moisture, light, and pH. Automated irrigation via solenoid valves and predictive algorithms, backed by MQTT/HTTP, MySQL, and a React real-time dashboard.</p>
+      <div class="project-tech">
+        <span class="tech-pill">ESP32</span>
+        <span class="tech-pill">MQTT/HTTP</span>
+        <span class="tech-pill">React</span>
+        <span class="tech-pill amber">Node.js</span>
+        <span class="tech-pill amber">MySQL</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <p class="project-num">P-009 · 2023–2024</p>
+      <h3 class="project-title">CAN-Based Battery Management System (EV)</h3>
+      <p class="project-desc">CAN-based battery swapping station for electric vehicles using AVR microcontrollers. Implemented firmware for central, initial, and end nodes with CAN and Pylon protocols. Extensive testing validated system reliability for sustainable EV applications.</p>
+      <div class="project-tech">
+        <span class="tech-pill">AVR</span>
+        <span class="tech-pill">CAN Protocol</span>
+        <span class="tech-pill amber">Pylon Protocol</span>
+        <span class="tech-pill amber">BMS</span>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -737,100 +729,94 @@
       <div class="section-line"></div>
     </div>
     <div class="skills-grid">
-
       <div class="skill-category reveal">
-        <p class="skill-cat-title">Simulation &amp; Analysis</p>
+        <p class="skill-cat-title">Programming Languages</p>
         <ul class="skill-list">
           <li class="skill-item">
-            <span class="skill-name">FEMM <span class="skill-pct">90%</span></span>
-            <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
+            <span class="skill-name">C / C++ <span class="skill-pct">92%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:92%"></div></div>
           </li>
           <li class="skill-item">
-            <span class="skill-name">Magnetostatic FEM <span class="skill-pct">85%</span></span>
+            <span class="skill-name">SystemVerilog / VHDL <span class="skill-pct">85%</span></span>
             <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
           </li>
           <li class="skill-item">
-            <span class="skill-name">Python (NumPy/Matplotlib) <span class="skill-pct">80%</span></span>
+            <span class="skill-name">Python <span class="skill-pct">80%</span></span>
             <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
           </li>
           <li class="skill-item">
-            <span class="skill-name">Lua Scripting <span class="skill-pct">70%</span></span>
-            <div class="skill-bar"><div class="skill-fill" style="--w:70%"></div></div>
+            <span class="skill-name">Java / HTML / CSS <span class="skill-pct">68%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:68%"></div></div>
           </li>
         </ul>
       </div>
-
       <div class="skill-category reveal">
-        <p class="skill-cat-title">Fabrication &amp; Hardware</p>
+        <p class="skill-cat-title">FPGA &amp; Embedded</p>
         <ul class="skill-list">
           <li class="skill-item">
-            <span class="skill-name">Silicone Composite Casting <span class="skill-pct">85%</span></span>
+            <span class="skill-name">Microcontrollers (AVR/TI/ESP32) <span class="skill-pct">92%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:92%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">FPGA Design (ZYNQ 7000) <span class="skill-pct">85%</span></span>
             <div class="skill-bar"><div class="skill-fill amber" style="--w:85%"></div></div>
           </li>
           <li class="skill-item">
-            <span class="skill-name">FDM 3D Printing <span class="skill-pct">90%</span></span>
-            <div class="skill-bar"><div class="skill-fill amber" style="--w:90%"></div></div>
+            <span class="skill-name">Vivado / Quartus Prime <span class="skill-pct">83%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:83%"></div></div>
           </li>
           <li class="skill-item">
-            <span class="skill-name">Hall Sensor Assembly <span class="skill-pct">80%</span></span>
-            <div class="skill-bar"><div class="skill-fill amber" style="--w:80%"></div></div>
-          </li>
-          <li class="skill-item">
-            <span class="skill-name">PCB Prototyping <span class="skill-pct">65%</span></span>
-            <div class="skill-bar"><div class="skill-fill amber" style="--w:65%"></div></div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="skill-category reveal">
-        <p class="skill-cat-title">Design &amp; CAD</p>
-        <ul class="skill-list">
-          <li class="skill-item">
-            <span class="skill-name">Fusion 360 <span class="skill-pct">88%</span></span>
-            <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
-          </li>
-          <li class="skill-item">
-            <span class="skill-name">Parametric Modelling <span class="skill-pct">85%</span></span>
-            <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
-          </li>
-          <li class="skill-item">
-            <span class="skill-name">Print-in-Place Design <span class="skill-pct">80%</span></span>
-            <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
-          </li>
-          <li class="skill-item">
-            <span class="skill-name">Technical Drawing <span class="skill-pct">75%</span></span>
-            <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="skill-category reveal">
-        <p class="skill-cat-title">Research &amp; Documentation</p>
-        <ul class="skill-list">
-          <li class="skill-item">
-            <span class="skill-name">Experimental Design <span class="skill-pct">80%</span></span>
-            <div class="skill-bar"><div class="skill-fill amber" style="--w:80%"></div></div>
-          </li>
-          <li class="skill-item">
-            <span class="skill-name">Technical Writing <span class="skill-pct">85%</span></span>
-            <div class="skill-bar"><div class="skill-fill amber" style="--w:85%"></div></div>
-          </li>
-          <li class="skill-item">
-            <span class="skill-name">Sensor Characterisation <span class="skill-pct">82%</span></span>
-            <div class="skill-bar"><div class="skill-fill amber" style="--w:82%"></div></div>
-          </li>
-          <li class="skill-item">
-            <span class="skill-name">Literature Review <span class="skill-pct">78%</span></span>
+            <span class="skill-name">MATLAB / ModelSim <span class="skill-pct">78%</span></span>
             <div class="skill-bar"><div class="skill-fill amber" style="--w:78%"></div></div>
           </li>
         </ul>
       </div>
-
+      <div class="skill-category reveal">
+        <p class="skill-cat-title">PCB &amp; Hardware Design</p>
+        <ul class="skill-list">
+          <li class="skill-item">
+            <span class="skill-name">EasyEDA <span class="skill-pct">92%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:92%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Altium Designer <span class="skill-pct">82%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:82%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Analog Circuit Design <span class="skill-pct">80%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">LTspice / SolidWorks <span class="skill-pct">75%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
+          </li>
+        </ul>
+      </div>
+      <div class="skill-category reveal">
+        <p class="skill-cat-title">Systems &amp; Protocols</p>
+        <ul class="skill-list">
+          <li class="skill-item">
+            <span class="skill-name">IoT (MQTT / HTTP) <span class="skill-pct">88%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:88%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">CAN / RS-485 / UART <span class="skill-pct">83%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:83%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Control Systems (PID / MagLev) <span class="skill-pct">80%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:80%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Robotics &amp; Autonomous Systems <span class="skill-pct">78%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:78%"></div></div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- RESUME -->
 <section id="resume">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -843,22 +829,34 @@
         <p class="resume-section-title">Experience</p>
         <ul class="timeline">
           <li class="timeline-item">
-            <p class="tl-date">2024 — Present</p>
+            <p class="tl-date">2026</p>
             <p class="tl-title">Research Intern</p>
             <p class="tl-org">National University of Singapore</p>
-            <p class="tl-desc">Magnetic skin & e-skin sensor development. FEMM simulation, Ecoflex composite fabrication, Hall sensor array assembly, and sensor characterisation across a 17-week programme.</p>
+            <p class="tl-desc">MagLev control algorithm, H-bridge analog design, and closed-loop Hall-effect sensor feedback. Under Asst. Prof. Justin Moon, Division of Industrial Design &amp; CDE.</p>
           </li>
           <li class="timeline-item">
-            <p class="tl-date">2023</p>
-            <p class="tl-title">Hardware Design Project</p>
-            <p class="tl-org">University · Capstone Project</p>
-            <p class="tl-desc">Designed and fabricated a wearable sensor prototype for motion capture, integrating IMUs and custom soft elastomer components.</p>
+            <p class="tl-date">2025</p>
+            <p class="tl-title">Research Intern (Virtual)</p>
+            <p class="tl-org">IIT Kanpur</p>
+            <p class="tl-desc">QPSK transceiver optimisation via HDL Coder. Digital AGC, symbol timing sync, and 13-bit Barker preambles. Under Asst. Prof. Nagaditya Poluri, Dept. of Electrical Engineering.</p>
           </li>
           <li class="timeline-item">
-            <p class="tl-date">2022</p>
-            <p class="tl-title">3D Printing Lab Volunteer</p>
-            <p class="tl-org">University Makerspace</p>
-            <p class="tl-desc">Assisted with printer calibration, print-in-place design workshops, and supporting students with FDM fabrication projects.</p>
+            <p class="tl-date">2024 – 2025</p>
+            <p class="tl-title">Hardware Developer</p>
+            <p class="tl-org">Roboticgen</p>
+            <p class="tl-desc">Led design of the ESP32-S3 custom development board. Embedded architecture and hardware integration.</p>
+          </li>
+          <li class="timeline-item">
+            <p class="tl-date">2023 – 2025</p>
+            <p class="tl-title">Part-time Intern</p>
+            <p class="tl-org">Sentranova Technologies</p>
+            <p class="tl-desc">Embedded electronics and IoT systems across multiple product lines.</p>
+          </li>
+          <li class="timeline-item">
+            <p class="tl-date">2023 – Present</p>
+            <p class="tl-title">Freelance PCB Designer</p>
+            <p class="tl-org">Fiverr</p>
+            <p class="tl-desc">Custom embedded system PCB design for local and international clients.</p>
           </li>
         </ul>
       </div>
@@ -866,94 +864,130 @@
         <p class="resume-section-title">Education</p>
         <ul class="timeline">
           <li class="timeline-item">
-            <p class="tl-date">2021 — 2025</p>
-            <p class="tl-title">BEng [Your Degree]</p>
-            <p class="tl-org">[Your University]</p>
-            <p class="tl-desc">Focus on mechatronics, electromagnetics, and materials science. Dissertation on flexible sensing systems for wearable robotics.</p>
+            <p class="tl-date">2023 – Present</p>
+            <p class="tl-title">B.Sc. (Hons) Electronics &amp; Telecom Eng.</p>
+            <p class="tl-org">University of Moratuwa, Sri Lanka</p>
+            <p class="tl-desc">GPA: 3.7 / 4.0 · 91.75/100. Specialisation in embedded systems, FPGA programming, and microcontroller design.</p>
           </li>
           <li class="timeline-item">
-            <p class="tl-date">2023</p>
-            <p class="tl-title">Exchange Semester</p>
-            <p class="tl-org">[Exchange University]</p>
-            <p class="tl-desc">Courses in advanced robotics and human-robot interaction design.</p>
+            <p class="tl-date">2019 – 2022</p>
+            <p class="tl-title">GCE Advanced Level — 3As</p>
+            <p class="tl-org">Royal College, Colombo</p>
+            <p class="tl-desc">Mathematics, Physics, Chemistry. Colombo District: 73rd · Island: 273rd.</p>
+          </li>
+          <li class="timeline-item">
+            <p class="tl-date">2012 – 2018</p>
+            <p class="tl-title">GCE Ordinary Level — 8As, 1B</p>
+            <p class="tl-org">Central College, Piliyandala</p>
+            <p class="tl-desc">Best results of Piliyandala Central College in 2018.</p>
           </li>
         </ul>
-        <br><br>
-        <p class="resume-section-title">Certifications &amp; Courses</p>
+        <br>
+        <p class="resume-section-title">Leadership</p>
         <ul class="timeline">
           <li class="timeline-item">
-            <p class="tl-date">2024</p>
-            <p class="tl-title">Magnetic Field Simulation — FEMM</p>
-            <p class="tl-org">Self-directed · NUS Lab Training</p>
+            <p class="tl-date">2025 – 2026</p>
+            <p class="tl-title">R&amp;D Director</p>
+            <p class="tl-org">OREPA</p>
+            <p class="tl-desc">Leading R&amp;D, managing cross-functional teams from concept to prototype.</p>
           </li>
           <li class="timeline-item">
-            <p class="tl-date">2023</p>
-            <p class="tl-title">Advanced Fusion 360 Parametric Design</p>
-            <p class="tl-org">Autodesk / Online</p>
+            <p class="tl-date">2025 – Present</p>
+            <p class="tl-title">Assistant Sergeant at Arms</p>
+            <p class="tl-org">Gavel Club · University of Moratuwa</p>
+          </li>
+          <li class="timeline-item">
+            <p class="tl-date">2022 – Present</p>
+            <p class="tl-title">Mathematics Instructor (Volunteer)</p>
+            <p class="tl-org">Sasnaka Sansadaya · Ganitha Saviya</p>
+            <p class="tl-desc">A/L Mathematics workshops across multiple schools in Sri Lanka.</p>
           </li>
         </ul>
       </div>
     </div>
+
+    <div style="margin-top:4rem;" class="reveal">
+      <p class="resume-section-title">Achievements</p>
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <p class="ach-title">1st Runner-up · SPARK Challenge</p>
+          <p class="ach-org">ENTC UoM · 2025/2026</p>
+        </div>
+        <div class="achievement-card">
+          <p class="ach-title">Finalist · DEXTRON Competition</p>
+          <p class="ach-org">ITUOM · Fast Line Follower</p>
+        </div>
+        <div class="achievement-card">
+          <p class="ach-title">Semifinalist · ROBO GAMES</p>
+          <p class="ach-org">UoM · Autonomous Navigation</p>
+        </div>
+        <div class="achievement-card">
+          <p class="ach-title">Semifinalist · SLIOT (×2)</p>
+          <p class="ach-org">UoM · 2023 &amp; 2025</p>
+        </div>
+        <div class="achievement-card">
+          <p class="ach-title">National Maths Olympiad Pool</p>
+          <p class="ach-org">3 Consecutive Years · 2016–2018</p>
+        </div>
+        <div class="achievement-card">
+          <p class="ach-title">Higher Distinction &amp; Silver Medal</p>
+          <p class="ach-org">Australian Chemistry Competition · 2019</p>
+        </div>
+      </div>
+    </div>
+
     <div class="resume-download-row reveal">
-      <p>Full resume available on request</p>
-      <a href="#contact" class="btn">Request CV</a>
+      <p>Full CV available on request</p>
+      <a href="mailto:vidurangajka.22@uom.lk?subject=CV%20Request%20-%20Portfolio" class="btn">Request CV</a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <p class="contact-tag reveal">05 · Contact</p>
     <h2 class="contact-heading reveal">Let's Build<br>Something.</h2>
-    <p class="contact-sub reveal">
-      Open to research collaborations, hardware engineering roles, and conversations about magnetic sensing, soft robotics, or clever CAD.
-    </p>
+    <p class="contact-sub reveal">Open to research collaborations, hardware engineering internships, and conversations about embedded systems, FPGA design, PCB development, or control systems.</p>
     <div class="contact-links reveal">
-      <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank">
+      <a href="https://www.linkedin.com/in/anjana-viduranga/" class="contact-link" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
-      <a href="https://github.com/yourusername" class="contact-link" target="_blank">
+      <a href="https://github.com/anjana-viduranga" class="contact-link" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         GitHub
       </a>
+      <a href="https://www.fiverr.com/" class="contact-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Fiverr · PCB Design
+      </a>
     </div>
     <div class="contact-divider"></div>
-    <a href="mailto:anjana@example.com" class="contact-email reveal">anjana@example.com</a>
+    <a href="mailto:vidurangajka.22@uom.lk" class="contact-email reveal">vidurangajka.22@uom.lk</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p>© 2025 Anjana · Engineering Portfolio</p>
-  <p>Built with precision</p>
+  <p>© 2026 Anjana Viduranga · Electronics &amp; Telecom Engineer</p>
+  <p>University of Moratuwa · Sri Lanka</p>
 </footer>
 
 <script>
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   reveals.forEach(r => observer.observe(r));
 
-  // Nav active state on scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
     navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current
-        ? 'var(--cyan)' : '';
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--cyan)' : '';
     });
   });
 </script>
