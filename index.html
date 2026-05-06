@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anjana — Engineering Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@300;400;500&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b10;
+    --bg2: #0d1117;
+    --bg3: #121820;
+    --cyan: #00e5ff;
+    --amber: #ffb300;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --border: rgba(0, 229, 255, 0.12);
+    --border2: rgba(0, 229, 255, 0.25);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GRID BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(8,11,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--amber); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--cyan);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--cyan);
+  }
+  .hero-name {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name .accent { color: var(--cyan); }
+  .hero-role {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 2.5rem;
+  }
+  .hero-role strong { color: var(--amber); font-weight: 600; }
+  .hero-desc {
+    font-size: 1.15rem;
+    color: var(--text);
+    max-width: 580px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .hero-ctas { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--cyan);
+    background: transparent;
+    color: var(--cyan);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn:hover { background: var(--cyan); color: var(--bg); }
+  .btn-amber { border-color: var(--amber); color: var(--amber); }
+  .btn-amber:hover { background: var(--amber); color: var(--bg); }
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cyan);
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* SECTION WRAPPER */
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border2);
+  }
+
+  /* ABOUT */
+  #about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p { margin-bottom: 1.25rem; color: var(--text); font-size: 1.05rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-sidebar {}
+  .info-block { margin-bottom: 2.5rem; }
+  .info-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 0.6rem;
+  }
+  .info-value { color: var(--text); font-weight: 600; font-size: 1.05rem; }
+  .info-value a { color: var(--amber); text-decoration: none; }
+  .info-value a:hover { text-decoration: underline; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .tag.active { border-color: var(--cyan); color: var(--cyan); }
+
+  /* PROJECTS */
+  #projects {}
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+  }
+  .project-card {
+    background: var(--bg2);
+    padding: 2.5rem;
+    position: relative;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .project-card:hover { background: var(--bg3); }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--cyan);
+    transition: height 0.3s;
+  }
+  .project-card:hover::before { height: 100%; }
+  .project-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+  .project-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+    line-height: 1.35;
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tech-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    background: rgba(0,229,255,0.07);
+    border: 1px solid rgba(0,229,255,0.18);
+    color: var(--cyan);
+  }
+  .tech-pill.amber {
+    background: rgba(255,179,0,0.07);
+    border-color: rgba(255,179,0,0.18);
+    color: var(--amber);
+  }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+  .skill-category {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    background: var(--bg);
+    position: relative;
+  }
+  .skill-cat-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-list { list-style: none; }
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.1rem;
+  }
+  .skill-item:last-child { margin-bottom: 0; }
+  .skill-name {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .skill-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+  .skill-bar {
+    height: 2px;
+    background: rgba(255,255,255,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    background: var(--cyan);
+    animation: fillBar 1.2s ease forwards;
+    animation-delay: 0.2s;
+    width: 0;
+  }
+  .skill-fill.amber { background: var(--amber); }
+  @keyframes fillBar {
+    to { width: var(--w); }
+  }
+
+  /* RESUME */
+  #resume {}
+  .resume-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+  .resume-section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .timeline { list-style: none; }
+  .timeline-item { position: relative; padding-left: 1.5rem; margin-bottom: 2.5rem; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.55rem;
+    width: 5px; height: 5px;
+    background: var(--cyan);
+  }
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 2px; top: 1.2rem;
+    bottom: -2.5rem;
+    width: 1px;
+    background: var(--border2);
+  }
+  .timeline-item:last-child::after { display: none; }
+  .tl-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .tl-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+  .tl-org { font-size: 0.9rem; color: var(--amber); margin-bottom: 0.5rem; }
+  .tl-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+  .resume-download-row {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .resume-download-row p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--bg2); }
+  .contact-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+    text-align: center;
+  }
+  .contact-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 1.5rem;
+  }
+  .contact-heading {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  .contact-sub {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--border2);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    background: var(--bg);
+  }
+  .contact-link:hover { border-color: var(--cyan); color: var(--cyan); }
+  .contact-link svg { width: 18px; height: 18px; }
+  .contact-divider {
+    margin: 3rem auto;
+    width: 60px;
+    height: 1px;
+    background: var(--border2);
+  }
+  .contact-email {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: var(--amber);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .contact-email:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* SCAN LINE ANIMATION */
+  @keyframes scanline {
+    0% { top: 0; }
+    100% { top: 100%; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .section-inner { padding: 4rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .resume-cols { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+  }
+
+  /* SCROLL FADE-IN */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">AN<span>J</span>ANA</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-tag">Engineering Portfolio</p>
+  <h1 class="hero-name">ANJANA<br><span class="accent">—</span></h1>
+  <p class="hero-role">Hardware Engineer · <strong>Sensor Systems &amp; Smart Materials</strong></p>
+  <p class="hero-desc">
+    I build things that sense the world — from soft magnetic e-skin sensors to precision electromagnetic field simulators. Currently at the National University of Singapore, pushing the boundaries of human-machine interfaces.
+  </p>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn">View Projects</a>
+    <a href="#contact" class="btn btn-amber">Get In Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">17</div>
+      <div class="stat-label">Week Research Internship</div>
+    </div>
+    <div>
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Hardware Projects</div>
+    </div>
+    <div>
+      <div class="stat-num">NUS</div>
+      <div class="stat-label">Singapore</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I'm a hardware engineer with a passion for building systems that sit at the intersection of materials science, electromagnetics, and human interfaces. My work spans from finite element simulation to hands-on fabrication — I like knowing how something works all the way down.
+        </p>
+        <p>
+          At NUS, I've been developing magnetic e-skin sensors — stretchable composite materials embedded with NdFeB powder that can detect pressure and deformation using Hall-effect sensor arrays. It's the kind of problem that requires you to think in magnetic fields, silicone chemistry, and PCB layout all at once.
+        </p>
+        <p>
+          Outside the lab, I design parametric CAD models in Fusion 360 and prototype with 3D printing — always iterating, always asking whether the design can be cleverer. I believe the best engineering work is both precise and a little bit beautiful.
+        </p>
+      </div>
+      <div class="about-sidebar reveal">
+        <div class="info-block">
+          <p class="info-label">Current Position</p>
+          <p class="info-value">Research Intern · Magnetic Skin Lab<br>National University of Singapore</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Location</p>
+          <p class="info-value">Singapore / Remote</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Core Interests</p>
+          <div class="tags">
+            <span class="tag active">E-Skin Sensors</span>
+            <span class="tag active">Electromagnetics</span>
+            <span class="tag active">Soft Robotics</span>
+            <span class="tag">HRI</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">FEM Simulation</span>
+            <span class="tag">CAD Design</span>
+          </div>
+        </div>
+        <div class="info-block">
+          <p class="info-label">Email</p>
+          <p class="info-value"><a href="mailto:anjana@example.com">anjana@example.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <p class="project-num">P-001</p>
+      <h3 class="project-title">Magnetic E-Skin Sensor Array</h3>
+      <p class="project-desc">Stretchable pressure sensor using NdFeB-embedded Ecoflex silicone and a Hall-effect sensor array. Detects sub-Newton normal and shear forces across a 4×4 sensing grid with &lt;5% hysteresis.</p>
+      <div class="project-tech">
+        <span class="tech-pill">Ecoflex Composites</span>
+        <span class="tech-pill">NdFeB Powder</span>
+        <span class="tech-pill">Hall Sensors</span>
+        <span class="tech-pill amber">FEMM Simulation</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <p class="project-num">P-002</p>
+      <h3 class="project-title">Halbach Array Field Optimizer</h3>
+      <p class="project-desc">FEMM-based parametric simulation of Halbach array geometries for maximising flux density on the sensing face. Automated parameter sweeps across magnet thickness, pitch, and array segmentation.</p>
+      <div class="project-tech">
+        <span class="tech-pill">FEMM 4.2</span>
+        <span class="tech-pill">Lua Scripting</span>
+        <span class="tech-pill amber">Python Post-Processing</span>
+        <span class="tech-pill">Magnetostatics</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <p class="project-num">P-003</p>
+      <h3 class="project-title">Print-in-Place Chainmail Mesh</h3>
+      <p class="project-desc">Parametric Fusion 360 design for a compliant, print-in-place square tile chainmail structure. Designed for wearable applications — tunable link clearances, single-print assembly-free fabrication.</p>
+      <div class="project-tech">
+        <span class="tech-pill">Fusion 360</span>
+        <span class="tech-pill">Parametric CAD</span>
+        <span class="tech-pill amber">FDM Printing</span>
+        <span class="tech-pill">Section Analysis</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <p class="project-num">P-004</p>
+      <h3 class="project-title">Coil Geometry Modelling for Inductive Sensing</h3>
+      <p class="project-desc">Electromagnetic coil geometry study using finite element methods to characterise inductance sensitivity to deformation in flexible substrates. Informed coil winding specs for embedded sensing applications.</p>
+      <div class="project-tech">
+        <span class="tech-pill">FEM</span>
+        <span class="tech-pill">Inductive Sensing</span>
+        <span class="tech-pill amber">FEMM</span>
+        <span class="tech-pill">Coil Design</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <p class="project-num">P-005</p>
+      <h3 class="project-title">Sensor Characterisation Rig</h3>
+      <p class="project-desc">Custom test setup for systematic characterisation of e-skin sensor response — force-displacement curves, drift measurement, and spatial sensitivity mapping using controlled indentation apparatus.</p>
+      <div class="project-tech">
+        <span class="tech-pill">Data Acquisition</span>
+        <span class="tech-pill">Python</span>
+        <span class="tech-pill amber">Matplotlib</span>
+        <span class="tech-pill">Arduino</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <p class="project-num">P-006</p>
+      <h3 class="project-title">Ecoflex Composite Fabrication Process</h3>
+      <p class="project-desc">Development and optimisation of a reproducible moulding process for NdFeB-Ecoflex composites — controlling powder concentration, mixing protocols, curing cycles, and post-magnetisation alignment.</p>
+      <div class="project-tech">
+        <span class="tech-pill">Silicone Fabrication</span>
+        <span class="tech-pill">Material Characterisation</span>
+        <span class="tech-pill amber">Magnetic Alignment</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-category reveal">
+        <p class="skill-cat-title">Simulation &amp; Analysis</p>
+        <ul class="skill-list">
+          <li class="skill-item">
+            <span class="skill-name">FEMM <span class="skill-pct">90%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Magnetostatic FEM <span class="skill-pct">85%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Python (NumPy/Matplotlib) <span class="skill-pct">80%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Lua Scripting <span class="skill-pct">70%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:70%"></div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <p class="skill-cat-title">Fabrication &amp; Hardware</p>
+        <ul class="skill-list">
+          <li class="skill-item">
+            <span class="skill-name">Silicone Composite Casting <span class="skill-pct">85%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:85%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">FDM 3D Printing <span class="skill-pct">90%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:90%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Hall Sensor Assembly <span class="skill-pct">80%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:80%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">PCB Prototyping <span class="skill-pct">65%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:65%"></div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <p class="skill-cat-title">Design &amp; CAD</p>
+        <ul class="skill-list">
+          <li class="skill-item">
+            <span class="skill-name">Fusion 360 <span class="skill-pct">88%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Parametric Modelling <span class="skill-pct">85%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Print-in-Place Design <span class="skill-pct">80%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Technical Drawing <span class="skill-pct">75%</span></span>
+            <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <p class="skill-cat-title">Research &amp; Documentation</p>
+        <ul class="skill-list">
+          <li class="skill-item">
+            <span class="skill-name">Experimental Design <span class="skill-pct">80%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:80%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Technical Writing <span class="skill-pct">85%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:85%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Sensor Characterisation <span class="skill-pct">82%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:82%"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Literature Review <span class="skill-pct">78%</span></span>
+            <div class="skill-bar"><div class="skill-fill amber" style="--w:78%"></div></div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Resume</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="resume-cols">
+      <div class="reveal">
+        <p class="resume-section-title">Experience</p>
+        <ul class="timeline">
+          <li class="timeline-item">
+            <p class="tl-date">2024 — Present</p>
+            <p class="tl-title">Research Intern</p>
+            <p class="tl-org">National University of Singapore</p>
+            <p class="tl-desc">Magnetic skin & e-skin sensor development. FEMM simulation, Ecoflex composite fabrication, Hall sensor array assembly, and sensor characterisation across a 17-week programme.</p>
+          </li>
+          <li class="timeline-item">
+            <p class="tl-date">2023</p>
+            <p class="tl-title">Hardware Design Project</p>
+            <p class="tl-org">University · Capstone Project</p>
+            <p class="tl-desc">Designed and fabricated a wearable sensor prototype for motion capture, integrating IMUs and custom soft elastomer components.</p>
+          </li>
+          <li class="timeline-item">
+            <p class="tl-date">2022</p>
+            <p class="tl-title">3D Printing Lab Volunteer</p>
+            <p class="tl-org">University Makerspace</p>
+            <p class="tl-desc">Assisted with printer calibration, print-in-place design workshops, and supporting students with FDM fabrication projects.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <p class="resume-section-title">Education</p>
+        <ul class="timeline">
+          <li class="timeline-item">
+            <p class="tl-date">2021 — 2025</p>
+            <p class="tl-title">BEng [Your Degree]</p>
+            <p class="tl-org">[Your University]</p>
+            <p class="tl-desc">Focus on mechatronics, electromagnetics, and materials science. Dissertation on flexible sensing systems for wearable robotics.</p>
+          </li>
+          <li class="timeline-item">
+            <p class="tl-date">2023</p>
+            <p class="tl-title">Exchange Semester</p>
+            <p class="tl-org">[Exchange University]</p>
+            <p class="tl-desc">Courses in advanced robotics and human-robot interaction design.</p>
+          </li>
+        </ul>
+        <br><br>
+        <p class="resume-section-title">Certifications &amp; Courses</p>
+        <ul class="timeline">
+          <li class="timeline-item">
+            <p class="tl-date">2024</p>
+            <p class="tl-title">Magnetic Field Simulation — FEMM</p>
+            <p class="tl-org">Self-directed · NUS Lab Training</p>
+          </li>
+          <li class="timeline-item">
+            <p class="tl-date">2023</p>
+            <p class="tl-title">Advanced Fusion 360 Parametric Design</p>
+            <p class="tl-org">Autodesk / Online</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="resume-download-row reveal">
+      <p>Full resume available on request</p>
+      <a href="#contact" class="btn">Request CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="contact-tag reveal">05 · Contact</p>
+    <h2 class="contact-heading reveal">Let's Build<br>Something.</h2>
+    <p class="contact-sub reveal">
+      Open to research collaborations, hardware engineering roles, and conversations about magnetic sensing, soft robotics, or clever CAD.
+    </p>
+    <div class="contact-links reveal">
+      <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/yourusername" class="contact-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="contact-divider"></div>
+    <a href="mailto:anjana@example.com" class="contact-email reveal">anjana@example.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Anjana · Engineering Portfolio</p>
+  <p>Built with precision</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Nav active state on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--cyan)' : '';
+    });
+  });
+</script>
+</body>
+</html>
